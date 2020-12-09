@@ -1,6 +1,6 @@
 const {Sequelize}=require('sequelize')
 
- module.exports=(sequelize, DataTypes)=>{
+ module.exports=(sequelize)=>{
     return sequelize.define('review',{
         origin: {
             type: Sequelize.STRING,

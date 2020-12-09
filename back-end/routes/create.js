@@ -4,7 +4,8 @@ const router=express.Router()
 
 router.get('/create', async (req, res, next) => {
     try {
-      await sequelize.sync({ force: true })     // force: true => forteaza sa se stearga tabela
+      // console.log(sequelize);
+      await sequelize.sequelize.sync({ force: true })     // force: true => forteaza sa se stearga tabela
       res.status(201).json({ message: 'created' })
     } catch (err) {
       next(err)
