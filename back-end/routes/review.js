@@ -20,3 +20,5 @@ router.delete('/user/:pid/review/:rid',(req,res)=>{
 router.get('/user/:pid/reviews',(req,res)=>{
 
 })
+
+module.exports=router

@@ -18,3 +18,5 @@ router.put('/profile/:id',(req,res)=>{
 router.delete('/profile/:id',(req,res)=>{
 
 })
+
+module.exports=router

@@ -12,3 +12,5 @@ router.get('/reviews/mean',(req,res)=>{
 router.get('/reviews/destination',(req,res)=>{
 
 })
+
+module.exports=router

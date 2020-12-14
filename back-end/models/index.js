@@ -1,9 +1,9 @@
  const sequelize=require('./db.js');
 
-const Users=sequelize.import('user',require('./User.js'))
+const User=sequelize.import('user',require('./User.js'))
 
-const Reviews=sequelize.import('review',require('./Review.js'))
+const Review=sequelize.import('review',require('./Review.js'))
 
-Users.hasMany(Reviews)
+User.hasMany(Review)
 
-module.exports={Users, Reviews, sequelize}
+module.exports={User, Review, sequelize}
