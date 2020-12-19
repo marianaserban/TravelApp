@@ -2,14 +2,13 @@ const sequelize=require('../models/index.js')
 const express=require('express')
 const router=express.Router()
 
-//rute pentru login, register, logout
 
 //aducem datele despre un user
 router.get('/profile/:id',(req,res)=>{
 
 })
 
-//update profil
+//update profil -> fara update parola pentru ca e o ruta diferita
 router.put('/profile/:id',(req,res)=>{
 
 })

@@ -10,6 +10,8 @@ router.get('/reviews/origin', async (req,res) => {
     };
 
     try {
+        console.log(req.query.filter)
+
         if (req.query.filter) {
             query.where.origin = req.query.filter;
             const reviewsByOrigin = await models.Review.findAll(query);

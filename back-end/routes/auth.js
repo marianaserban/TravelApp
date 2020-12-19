@@ -7,11 +7,11 @@ const User = require('../models').User;
 
 const { forwardAuthenticated } = require('../config/auth');
 
-// Login Page
-router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
+// // Login Page
+// router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
 
-// Register Page
-router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
+// // Register Page
+// router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
 
 // Register
 router.post('/register', (req, res) => {
@@ -26,12 +26,9 @@ router.post('/register', (req, res) => {
     errors.push({ msg: 'Passwords do not match' });
   }
 console.log(req.body)
-//   if (password.length< 6) {
-    
-//     errors.push({ msg: 'Password must be at least 6 characters' });
-//   }
 
   if (errors.length > 0) {
+    //facem in front
     // res.render('register', {
     //   errors,
     //   name,
