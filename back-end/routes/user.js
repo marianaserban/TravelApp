@@ -23,7 +23,10 @@ router.put('/profile/:id', async (req,res, next)=>{
     try {
         const profile = await models.User.findByPk(req.params.id)
         if (profile) {
-            //TODO: verifica daca body are password si scoate-o inaite de .update()
+            if (req.body.password) {
+                delete req.body.password;
+            }
+
             await profile.update(req.body);
             res.status(202).json({ message: "profile updated" });
         } else {
