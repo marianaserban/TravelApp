@@ -15,17 +15,14 @@ const { forwardAuthenticated } = require('../config/auth');
 
 // Register
 router.post('/register', (req, res) => {
-  const { name,surname, email, password, password2 } = req.body;
+  const { name, surname, email, password } = req.body;
   let errors = [];
 
-  if (!name || !surname|| !email || !password || !password2) {
+  if (!name || !surname || !email || !password) {
     errors.push({ msg: 'Please enter all fields' });
+    res.status(400).send({ message: 'Please enter all fields' })
   }
-
-  if (password != password2) {
-    errors.push({ msg: 'Passwords do not match' });
-  }
-console.log(req.body)
+  console.log(req.body)
 
   if (errors.length > 0) {
     //facem in front
@@ -38,10 +35,10 @@ console.log(req.body)
     //   password2
     // });
   } else {
-    User.findOne({where:{ email: email }}).then(user => {
+    User.findOne({ where: { email: email } }).then(user => {
       if (user) {
         errors.push({ msg: 'Email already exists' });
-        res.status(400).send({message:'Email already exists'})
+        res.status(400).send({ message: 'Email already exists' })
         //asta nu e necesara, facem in react
         // res.render('register', {
         //   errors,
@@ -72,7 +69,7 @@ console.log(req.body)
                 );
                 //res.redirect('/users/login');
                 //aici trimit un token si in front-end verific daca l-am primit
-                res.status(201).send({message:'user registered'})
+                res.status(201).send({ message: 'user registered' })
               })
               .catch(err => console.log(err));
           });
@@ -83,13 +80,34 @@ console.log(req.body)
 });
 
 // Login
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/users/login',
-    failureFlash: true
-  })(req, res, next);
+// router.post('/login', (req, res, next) => {
+//   passport.authenticate('local', {
+//     successRedirect: '/dashboard',
+//     failureRedirect: '/users/login',
+//     failureFlash: true
+//   })(req, res, next);
+// });
+
+router.get('/dashboard', (req, res, next) => {
+  res.send(req.user.id);
 });
+
+router.post('/login', async (req, res) => {
+  try {
+    console.log(req.body)
+    let user = await User.findOne({ where: { email: req.body.email } })
+    let valid = await bcrypt.compare(req.body.password, user.password);
+  
+    if (valid) {
+      res.send({ ok: true, id: user.id });
+    } else {
+      res.send({ ok: false,message:'Parola/email nu se potrivesc' });
+    }
+  }
+  catch (err) {
+    console.log(err)
+  }
+})
 
 //Logout -> se face din front-end pt ca am un token si cookie. Am un acces token si un refresh token
 //Acces token se foloseste pe fiecare req si are timp de expirare mic (5 min)
@@ -106,31 +124,31 @@ router.post('/logout', (req, res) => {
 });
 
 //update
-router.patch('/updatePassword/:id', async (req,res)=>{
-    const {password,oldPassword}=req.body
-    const user= await User.findByPk(req.params.id)
-    bcrypt.compare(oldPassword, user.password, (err, isMatch) => {
-        if (err) throw err;
-        if (isMatch) {
-            bcrypt.genSalt(10, (err, salt) => {
-                bcrypt.hash(password, salt, (err, hash) => {
-                  if (err) throw err;
-                  user.password = hash;
-                  user
-                    .save()
-                    .then(user => {
-                      res.send(user)
-                    })
-                    .catch(err => console.log(err));
-                });
+router.patch('/updatePassword/:id', async (req, res) => {
+  const { password, oldPassword } = req.body
+  const user = await User.findByPk(req.params.id)
+  bcrypt.compare(oldPassword, user.password, (err, isMatch) => {
+    if (err) throw err;
+    if (isMatch) {
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(password, salt, (err, hash) => {
+          if (err) throw err;
+          user.password = hash;
+          user
+            .save()
+            .then(user => {
+              res.send(user)
             })
-        } else{
-           console.log('Nu se potrivesc parolele')
-            res.status(400).send({
-            message: "Nu se potrivesc parolele"
-            })
-        }
-      });
-    
+            .catch(err => console.log(err));
+        });
+      })
+    } else {
+      console.log('Nu se potrivesc parolele')
+      res.status(400).send({
+        message: "Nu se potrivesc parolele"
+      })
+    }
+  });
+
 })
-module.exports=router
+module.exports = router

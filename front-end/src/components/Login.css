@@ -228,3 +228,40 @@ html {
     color: #e4cb58;
     font: inherit;
   }
+
+  input.error {
+    border: 1px solid red;
+  }
+  
+  .errorMessage {
+    color: red;
+    font-size: 0.75em;
+    display: relative;
+  }
+  
+  .name {
+    margin-right: 1%;
+  }
+  
+  .surname {
+    margin-left: 1%;
+  }
+  
+  .name,
+  .surname,
+  .email,
+  .password {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .name,
+  .surname {
+    width:100%;
+  }
+  
+  .email,
+  .password {
+    width: 100%;
+  }
