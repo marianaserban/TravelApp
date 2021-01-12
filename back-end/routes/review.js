@@ -58,8 +58,18 @@ router.delete('/user/:pid/review/:rid', async (req, res) => {
         next(error);
     }
 })
-//listarea tuturor
+//listarea tuturor pt un singur user
 router.get('/user/:pid/reviews', async (req, res) => {
+    try {
+        const reviews = await models.Review.findAll()
+        res.status(200).json(reviews)
+    } catch (error) {
+        next(error);
+    }
+})
+
+//listarea tuturor
+router.get('/reviews', async (req, res) => {
     try {
         const reviews = await models.Review.findAll()
         res.status(200).json(reviews)

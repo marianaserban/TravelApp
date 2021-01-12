@@ -9,9 +9,9 @@ const flash = require('connect-flash');
 const session = require('express-session');
 require('./config/passport')(passport);
 
-//const cors=require('cors')
+const cors=require('cors')
 
-//app.use(cors())
+app.use(cors())
 
 app.use(expressLayouts);
 app.set('view engine', 'ejs');

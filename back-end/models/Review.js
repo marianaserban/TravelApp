@@ -31,18 +31,18 @@ module.exports = (sequelize) => {
             allowNull: false
         },
         crowdedness: {
-            type: Sequelize.INTEGER, //-1,0,1
+            type: Sequelize.STRING, //-1,0,1
             allowNull: false,
-            values: [-1, 0, 1]
+            //values: [-1, 0, 1]
         },
         observations: {
             type: Sequelize.STRING, //-1,0,1
-            values: [-1, 0, 1]
+            //values: [-1, 0, 1]
         },
         satisfactionLevel: {
-            type: Sequelize.INTEGER, //-1,0,1
+            type: Sequelize.STRING, //-1,0,1
             allowNull: false,
-            values: [-1, 0, 1]
+           // values: [-1, 0, 1]
         }
     }, {
         underscored: true
