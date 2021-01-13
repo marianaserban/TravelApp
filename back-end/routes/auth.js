@@ -39,15 +39,6 @@ router.post('/register', (req, res) => {
       if (user) {
         errors.push({ msg: 'Email already exists' });
         res.status(400).send({ message: 'Email already exists' })
-        //asta nu e necesara, facem in react
-        // res.render('register', {
-        //   errors,
-        //   name,
-        //   surname,
-        //   email,
-        //   password,
-        //   password2
-        // });
       } else {
         const newUser = new User({
           name,
@@ -67,8 +58,6 @@ router.post('/register', (req, res) => {
                   'success_msg',
                   'You are now registered and can log in'
                 );
-                //res.redirect('/users/login');
-                //aici trimit un token si in front-end verific daca l-am primit
                 res.status(201).send({ message: 'user registered' })
               })
               .catch(err => console.log(err));
@@ -95,13 +84,17 @@ router.get('/dashboard', (req, res, next) => {
 router.post('/login', async (req, res) => {
   try {
     console.log(req.body)
+    const { email, password } =req.body
+    if (!email || !password) {
+      res.status(400).send({ ok: false, message: 'Please enter all fields' })
+    }
     let user = await User.findOne({ where: { email: req.body.email } })
     let valid = await bcrypt.compare(req.body.password, user.password);
   
     if (valid) {
       res.send({ ok: true, id: user.id });
     } else {
-      res.send({ ok: false,message:'Parola/email nu se potrivesc' });
+      res.send({ ok: false,message:'Password/email doesnt match' });
     }
   }
   catch (err) {
@@ -123,7 +116,7 @@ router.post('/logout', (req, res) => {
   res.redirect('/users/login');
 });
 
-//update
+//update parola
 router.patch('/updatePassword/:id', async (req, res) => {
   const { password, oldPassword } = req.body
   const user = await User.findByPk(req.params.id)
@@ -138,6 +131,7 @@ router.patch('/updatePassword/:id', async (req, res) => {
             .save()
             .then(user => {
               res.send(user)
+ 
             })
             .catch(err => console.log(err));
         });
@@ -145,7 +139,7 @@ router.patch('/updatePassword/:id', async (req, res) => {
     } else {
       console.log('Nu se potrivesc parolele')
       res.status(400).send({
-        message: "Nu se potrivesc parolele"
+        message: "Passwords dont match"
       })
     }
   });

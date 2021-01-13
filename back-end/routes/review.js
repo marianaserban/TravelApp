@@ -61,8 +61,15 @@ router.delete('/user/:pid/review/:rid', async (req, res) => {
 //listarea tuturor pt un singur user
 router.get('/user/:pid/reviews', async (req, res) => {
     try {
-        const reviews = await models.Review.findAll()
-        res.status(200).json(reviews)
+        const person = await User.findByPk(req.params.pid, {
+            include: [ models.Review ]
+          })
+          if (person) {
+            res.status(200).json(person.reviews)
+          } else {
+            res.status(404).json({ message: 'not found' })
+          }
+  
     } catch (error) {
         next(error);
     }

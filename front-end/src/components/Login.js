@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import "./Login.css";
 import { post } from '../Axios'
-import {getId, setId} from '../Utils'
+import { getId, setId } from '../Utils'
 
 export default class Login extends Component {
 
@@ -21,14 +21,14 @@ export default class Login extends Component {
     //post catre server
     loginUser = async () => {
         let res = await post("http://localhost:8080/users/login", this.state.user)
-        if(res.ok){
+        if (res.ok) {
             setId(res.id)
             this.props.history.push('/dashboard');
             console.log(res)
-        }else{
+        } else {
             alert(res.message)
         }
-      
+
     }
     handleChange = (e) => {
         e.preventDefault();
@@ -55,16 +55,16 @@ export default class Login extends Component {
                             <label>Email</label>
                         </div>
                         <div className="user-box">
-                            <input type="password" name="password" required=""onChange={this.handleChange}  />
+                            <input type="password" name="password" required="" onChange={this.handleChange} />
                             <label>Password</label>
                         </div>
 
                         <a href="/register"><input className="pulse" type="button" value="Register" /></a>
-                        {/* <input className="pulse" type="button" value="Login"/> */}
-                        <button type="submit">Login</button>
+                        <button className="pulse" type="submit">Login</button>
 
                     </form>
                 </div>
+                <a href="/search"><input className="pulse" type="button" value="Go without login" id="btnRew" /></a>
             </div>
         )
     }

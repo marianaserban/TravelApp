@@ -6,6 +6,11 @@ html {
     padding:0;
     font-family: sans-serif;
     background: linear-gradient(#141e30, #243b55);
+
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
   }
   
   .login-box {
@@ -100,6 +105,10 @@ html {
     animation: btn-anim1 1s linear infinite;
   } */
   
+
+
+  /*AICI*/
+ 
   @keyframes btn-anim1 {
     0% {
       left: -100%;
@@ -109,7 +118,7 @@ html {
     }
   }
   
-  .login-box a span:nth-child(2) {
+  /* .login-box a span:nth-child(2) {
     top: -100%;
     right: 0;
     width: 2px;
@@ -117,9 +126,9 @@ html {
     background: linear-gradient(180deg, transparent, #03e9f4);
     animation: btn-anim2 1s linear infinite;
     animation-delay: .25s
-  }
+  } */
   
-  @keyframes btn-anim2 {
+  /* @keyframes btn-anim2 {
     0% {
       top: -100%;
     }
@@ -165,7 +174,7 @@ html {
       bottom: 100%;
     }
   }
-  
+   */
 
   .pulse:hover,
 .pulse:focus {
@@ -190,16 +199,16 @@ html {
     --hover: #0e0341;
   }
 
-  input[type=button] {
+  button, input[type=button]{
     color: var(--color);
     transition: 0.25s;
   }
-  input[type=button]:hover, input[type=button]:focus {
+  button:hover, button:focus, input[type=button]:hover, input[type=button]:focus {
     border-color: var(--hover);
     color: #fff;
   }
   
-  body {
+  /* body {
     color: #fff;
     background: #17181c;
     font: 300 1em "Fira Sans", sans-serif;
@@ -209,9 +218,9 @@ html {
     text-align: center;
     min-height: 100vh;
     display: flex;
-  }
+  } */
   
-  input[type=button] {
+  button, input[type=button] {
     background: none;
     border: 2px solid;
     font: inherit;
@@ -229,39 +238,8 @@ html {
     font: inherit;
   }
 
-  input.error {
-    border: 1px solid red;
-  }
-  
-  .errorMessage {
-    color: red;
-    font-size: 0.75em;
-    display: relative;
-  }
-  
-  .name {
-    margin-right: 1%;
-  }
-  
-  .surname {
-    margin-left: 1%;
-  }
-  
-  .name,
-  .surname,
-  .email,
-  .password {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-  }
-  
-  .name,
-  .surname {
-    width:100%;
-  }
-  
-  .email,
-  .password {
-    width: 100%;
-  }
+#btnRew{
+  position: absolute;
+  top: 500px;
+  right: 0px;
+}

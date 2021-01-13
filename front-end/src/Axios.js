@@ -15,5 +15,4 @@ async function post(url, item) {
         return e.response.data;
     }
 }
-
 export {post}
