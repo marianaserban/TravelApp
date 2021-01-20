@@ -15,4 +15,21 @@ async function post(url, item) {
         return e.response.data;
     }
 }
-export {post}
+
+async function get(url, paramsObj) {
+    try {
+        return (await axios.get(
+            url,
+            {
+                params: paramsObj,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        )).data;
+    } catch (e) {
+        return e.response.data;
+    }
+}
+
+export {post, get}

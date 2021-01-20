@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const sequelize=require('../models/index.js')
 const express=require('express')
 const router=express.Router()
@@ -83,6 +84,38 @@ router.get('/reviews/destination', async (req,res) => {
         //nu vreau sa stie userul ca nu s-a putut cauta in db
         //deci returnez o lista goala (array)
         console.log('/review/destination query ERR');
+        res.status(200).json([]);
+    }
+})
+
+router.get('/reviews/search', async (req,res) => {
+    const query = {
+        where: {}
+    };
+
+    try {
+        console.log(req.query)
+
+        if (req.query.origin) query.where.origin = { [Op.like]: `%${req.query.origin}%` };
+        if (req.query.destination) query.where.destination = { [Op.like]: `%${req.query.destination}%` };
+        if (req.query.mean_of_transport) query.where.mean_of_transport = req.query.mean_of_transport;
+        if (req.query.observations) query.where.observations = { [Op.like]: `%${req.query.observations}%` };
+
+        if (Object.keys(query).length) {
+            const reviewsBySearch = await models.Review.findAll(query);
+
+            console.log('/review/search query OK');
+            res.status(200).json(reviewsBySearch);
+        } else {
+            //nu am primit filtru, returnez lista goala
+            console.log('/review/search query OK-ish (fara filtru)');
+            res.status(200).json([]);
+        }
+    } catch (error) {
+        //daca am eroare la findAll, intorc zero rezultate,
+        //nu vreau sa stie userul ca nu s-a putut cauta in db
+        //deci returnez o lista goala (array)
+        console.log('/review/search query ERR', error);
         res.status(200).json([]);
     }
 })

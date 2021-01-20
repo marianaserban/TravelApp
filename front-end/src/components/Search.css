@@ -1,0 +1,41 @@
+.search-filter {
+  margin: 20px 0;
+}
+
+input {
+  display: inline-block;
+  padding: 20px;
+  border: 0;
+  outline: none;
+  margin: 5px auto;
+  width: 150px;
+}
+
+select {
+  display: inline-block;
+  padding: 20px;
+  border: 0;
+  outline: none;
+  margin: 5px auto;
+  width: 200px;
+}
+
+button.search-button {
+  background: red;
+  display: inline-block;
+  padding: 20px;
+  border: 0 none;
+  outline: none;
+  margin: 5px auto;
+  width: 200px;
+}
+
+.search-reviews {
+  margin: 20px 0;
+}
+
+.search-review-item {
+  display: inline-block;
+  margin: 10px;
+  color: #fff;
+}
