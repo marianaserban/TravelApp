@@ -5,6 +5,7 @@ import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import AddReview from './components/AddReview'
 import Profile from './components/Profile'
+import ProfileEdit from './components/ProfileEdit'
 import Search from './components/Search'
 import SeeYourReviews from './components/SeeYourReviews'
 import RessetPassword from './components/RessetPassword'
@@ -21,6 +22,7 @@ function App() {
             <Route path="/register" exact component={Register} />
             <Route path="/dashboard" exact component={Dashboard} />
             <Route path="/profile" exact component={Profile} />
+            <Route path="/profile/edit" exact component={ProfileEdit} />
             <Route path="/addReview" exact component={AddReview} />
             <Route path="/seeYourReviews" exact component={SeeYourReviews} />
             <Route path="/search" exact component={Search} />
