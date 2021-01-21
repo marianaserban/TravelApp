@@ -56,18 +56,66 @@ export default class AddReview extends Component {
         return (
             <div>
                 <Navbar />
-                <form onSubmit={this.handleSubmit} noValidate>
+                <div className="review-box">
+                    <form onSubmit={this.handleSubmit} noValidate>
+                        <h2>Add a review</h2>
                     formular adauga review de catre utiliz cu id: {this.state.id}
                 // input sau select name sa fie acelasi cu ce e in state.reiview.PROPNAME
-                <input type="text" name="origin" onChange={this.handleChange} />
-                    <input type="text" name="destination" onChange={this.handleChange} />
-                    <input type="text" name="mean_of_transport" onChange={this.handleChange} />
-                    <input type="text" name="departure_hour" onChange={this.handleChange} />
-                    <input type="text" name="trip_duration" onChange={this.handleChange} />
-                    <input type="text" name="crowdedness" onChange={this.handleChange} />
-                    <input type="text" name="observations" onChange={this.handleChange} />
-                    <input type="text" name="satisfaction_level" onChange={this.handleChange} />
-                </form>
+
+                         <div className="review_input">
+                            <input id="origin" type="text" name="origin" onChange={this.handleChange} />
+                            <label>Origin</label>
+
+                        </div>
+
+                        <div className="review_input">
+                            <input type="text" name="destination" onChange={this.handleChange} />
+                            <label>Destination</label>
+
+                        </div>
+
+                        <div className="review_input">
+                            <select name="mean_of_transport" value={this.state.mean_of_transport}
+                                onChange={this.handleFiltersChange}>
+                                <option value="BUS">Bus</option>
+                                <option value="TRAM">Tram</option>
+                                <option value="METRO">Metro</option>
+                            </select>
+
+                        </div>
+
+                        <div className="review_input">
+                            <input type="text" name="departure_hour" onChange={this.handleChange} />
+                            <label>Departure hour</label>
+
+                        </div>
+
+                        <div className="review_input">
+                            <input type="text" name="trip_duration" onChange={this.handleChange} />
+                            <label>Trip duration</label>
+
+                        </div>
+
+                        <div className="review_input">
+                            <input type="text" name="crowdedness" onChange={this.handleChange} />
+                            <label>Crowdedness</label>
+
+                        </div>
+
+                        <div className="review_input">
+                            <input type="text" name="observations" onChange={this.handleChange} />
+                            <label>Observations</label>
+
+                        </div>
+
+                        <div className="review_input">
+                            <input type="text" name="satisfaction_level" onChange={this.handleChange} />
+                            <label>Satisfaction Level</label>
+
+                        </div>
+                        <button className="btnReview" type="submit">Add Review</button>
+                    </form>
+                </div>
             </div>
         )
     }
