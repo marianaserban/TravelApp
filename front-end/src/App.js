@@ -9,6 +9,7 @@ import ProfileEdit from './components/ProfileEdit'
 import Search from './components/Search'
 import SeeYourReviews from './components/SeeYourReviews'
 import RessetPassword from './components/RessetPassword'
+import EditReview from './components/EditReview'
 import './App.css';
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
             <Route path="/seeYourReviews" exact component={SeeYourReviews} />
             <Route path="/search" exact component={Search} />
             <Route path="/resetPassword" exact component={RessetPassword} />
+            <Route path="/editReview" exact component={EditReview} />
+
             <Route path="/" render={() => <div>404</div>} />
           </Switch>
         </BrowserRouter>

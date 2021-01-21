@@ -18,17 +18,17 @@ export default class Register extends Component {
 
     //post catre server
     saveUser = async () => {
-            let res = await post("http://localhost:8080/users/register", this.state.user).then(user => {
-                if(user.message===undefined){
-                    //alert('te-ai inregistrat la noi!')
-                    //this.props.history.push('/');
-                }else{
-                    alert(user.message);
-                    if(user.message==="user registered"){
-                        this.props.history.push('/');
-                    }
+        let res = await post("http://localhost:8080/users/register", this.state.user).then(user => {
+            if (user.message === undefined) {
+                //alert('te-ai inregistrat la noi!')
+                //this.props.history.push('/');
+            } else {
+                alert(user.message);
+                if (user.message === "user registered") {
+                    this.props.history.push('/');
                 }
-            })
+            }
+        })
     }
 
     handleSubmit = (e) => {
@@ -52,30 +52,32 @@ export default class Register extends Component {
     render() {
         return (
             <div>
+                <div className="clasuta">
 
-                <div className="login-box">
-                    <h2>Register</h2>
-                    <form onSubmit={this.handleSubmit} noValidate>
-                        <div className="user-box">
-                            <input type="text" name="name" onChange={this.handleChange} />
-                            <label>Name</label>
+                    <div className="login-box">
+                        <h2>Register</h2>
+                        <form onSubmit={this.handleSubmit} noValidate>
+                            <div className="user-box">
+                                <input type="text" name="name" onChange={this.handleChange} />
+                                <label>Name</label>
 
-                        </div>
-                        <div className="user-box">
-                            <input type="text" name="surname"  onChange={this.handleChange} />
-                            <label>Surname</label>
-       
-                        </div>
-                        <div className="user-box">
-                            <input type="text" name="email" required="" onChange={this.handleChange} />
-                            <label>Email</label>
-                        </div>
-                        <div className="user-box">
-                            <input type="password" name="password" required="" onChange={this.handleChange} />
-                            <label>Password</label>
-                        </div>
-                        <button className="pulse" type="submit">Create Account</button>
-                    </form>
+                            </div>
+                            <div className="user-box">
+                                <input type="text" name="surname" onChange={this.handleChange} />
+                                <label>Surname</label>
+
+                            </div>
+                            <div className="user-box">
+                                <input type="text" name="email" required="" onChange={this.handleChange} />
+                                <label>Email</label>
+                            </div>
+                            <div className="user-box">
+                                <input type="password" name="password" required="" onChange={this.handleChange} />
+                                <label>Password</label>
+                            </div>
+                            <button className="pulse" type="submit">Create Account</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         )

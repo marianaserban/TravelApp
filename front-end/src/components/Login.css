@@ -5,7 +5,8 @@ body {
   margin:0;
   padding:0;
   font-family: sans-serif;
-  background: linear-gradient(#141e30, #243b55);
+  /* background: linear-gradient(#141e30, #243b55); */
+  background-color: #243b55;
 
   justify-content: center;
   align-content: center;
@@ -243,4 +244,7 @@ code {
 position: absolute;
 top: 500px;
 right: 0px;
+}
+#login{
+  width: 150px;
 }

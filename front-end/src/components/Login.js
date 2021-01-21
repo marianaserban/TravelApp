@@ -61,7 +61,7 @@ export default class Login extends Component {
                             </div>
 
                             <a href="/register"><input className="pulse" type="button" value="Register" /></a>
-                            <button className="pulse" type="submit">Login</button>
+                            <button className="pulse" type="submit" id="login">Login</button>
 
                         </form>
                     </div>
