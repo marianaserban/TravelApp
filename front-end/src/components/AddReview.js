@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Navbar from './Navbar';
 import { getId, setId } from '../Utils'
 import { post } from '../Axios'
-
+import './AddReview.css'
 
 export default class AddReview extends Component {
     constructor(props) {
@@ -12,27 +12,26 @@ export default class AddReview extends Component {
             review: {
                 origin: '',
                 destination: '',
-                mean_of_transport: 'METRO',
-                departure_hour: '',
-                trip_duration: '',
+                meanOfTransport: '',
+                departureHour: '',
+                tripDuration: '',
                 crowdedness: '',
                 observations: '',
-                satisfaction_level: '',
-                user_id: getId()
+                satisfactionLevel: '',
+                // user_id: getId()
             }
         };
     }
 
     //post catre server
     saveReview = async () => {
-        let res = await post(`http://localhost:8080/users/${this.state.id}/review`, this.state.review).then(review => {
+        let res = await post(`http://localhost:8080/user/${this.state.id}/review`, this.state.review).then(review => {
             if (review.message === undefined) {
-                //alert('te-ai inregistrat la noi!')
-                //this.props.history.push('/');
             } else {
                 alert(review.message);
                 if (review.message === "created") {
-                    this.props.history.push('/');
+                    alert('Review added')
+                    this.props.history.push('/seeYourReviews');
                 }
             }
         })
@@ -56,65 +55,61 @@ export default class AddReview extends Component {
         return (
             <div>
                 <Navbar />
-                <div className="review-box">
-                    <form onSubmit={this.handleSubmit} noValidate>
+                <div className="clasuta">
+                    <div className="login-box">
                         <h2>Add a review</h2>
-                    formular adauga review de catre utiliz cu id: {this.state.id}
-                // input sau select name sa fie acelasi cu ce e in state.reiview.PROPNAME
+                        <form onSubmit={this.handleSubmit} noValidate>
+                            <div className="user-box">
+                                <input type="text" name="origin" onChange={this.handleChange} />
+                                <label>Origin</label>
 
-                         <div className="review_input">
-                            <input id="origin" type="text" name="origin" onChange={this.handleChange} />
-                            <label>Origin</label>
+                            </div>
+                            <div className="user-box">
+                                <input type="text" name="destination" onChange={this.handleChange} />
+                                <label>Destination</label>
 
-                        </div>
+                            </div>
 
-                        <div className="review_input">
-                            <input type="text" name="destination" onChange={this.handleChange} />
-                            <label>Destination</label>
+                            <div className="review_input">
+                                <select name="meanOfTransport"
+                                    onChange={this.handleChange} >
+                                    <option value="BUS">Bus</option>
+                                    <option value="TRAM">Tram</option>
+                                    <option value="METRO">Metro</option>
+                                </select>
 
-                        </div>
+                            </div>
 
-                        <div className="review_input">
-                            <select name="mean_of_transport" value={this.state.mean_of_transport}
-                                onChange={this.handleFiltersChange}>
-                                <option value="BUS">Bus</option>
-                                <option value="TRAM">Tram</option>
-                                <option value="METRO">Metro</option>
-                            </select>
+                            <div className="user-box">
+                                <input type="text" name="departureHour" onChange={this.handleChange} />
+                                <label>Departure hour</label>
+                            </div>
 
-                        </div>
+                            <div className="user-box">
+                                <input type="text" name="tripDuration" onChange={this.handleChange} />
+                                <label>Trip duration</label>
 
-                        <div className="review_input">
-                            <input type="text" name="departure_hour" onChange={this.handleChange} />
-                            <label>Departure hour</label>
+                            </div>
 
-                        </div>
+                            <div className="user-box">
+                                <input type="text" name="crowdedness" onChange={this.handleChange} />
+                                <label>Crowdedness</label>
 
-                        <div className="review_input">
-                            <input type="text" name="trip_duration" onChange={this.handleChange} />
-                            <label>Trip duration</label>
+                            </div>
 
-                        </div>
+                            <div className="user-box">
+                                <input type="text" name="observations" onChange={this.handleChange} />
+                                <label>Observations</label>
 
-                        <div className="review_input">
-                            <input type="text" name="crowdedness" onChange={this.handleChange} />
-                            <label>Crowdedness</label>
+                            </div>
+                            <div className="user-box">
+                                <input type="text" name="satisfactionLevel" onChange={this.handleChange} />
+                                <label>Satisfaction level</label>
+                            </div>
+                            <button className="pulse" type="submit">Add</button>
+                        </form>
 
-                        </div>
-
-                        <div className="review_input">
-                            <input type="text" name="observations" onChange={this.handleChange} />
-                            <label>Observations</label>
-
-                        </div>
-
-                        <div className="review_input">
-                            <input type="text" name="satisfaction_level" onChange={this.handleChange} />
-                            <label>Satisfaction Level</label>
-
-                        </div>
-                        <button className="btnReview" type="submit">Add Review</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         )

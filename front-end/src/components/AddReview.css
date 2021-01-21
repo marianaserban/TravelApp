@@ -1,4 +1,4 @@
-.review-box {
+/* .review-box {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -51,4 +51,151 @@
     left: 0;
     color: #03e9f4;
     font-size: 12px;
+  }
+ */
+
+ * {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+  }
+  
+    body {
+      font-family: sans-serif;
+      background: linear-gradient(#141e30, #243b55);
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 90vh;
+    }
+    
+    .login-box {
+      /* position: absolute;
+      top: 50%;
+      left: 50%; */
+      width: 400px;
+      padding-top: 10px 15px;
+      /* transform: translate(-50%, -50%); */
+      background: rgba(0,0,0,.5);
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(0,0,0,.6);
+      border-radius: 10px;
+  
+    }
+    
+    .login-box h2 {
+      margin: 0 0 30px;
+      padding: 0;
+      color: #fff;
+      text-align: center;
+    }
+    
+    .login-box .user-box {
+      position: relative;
+    }
+    
+    .login-box .user-box input {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 30px;
+      border: none;
+      border-bottom: 1px solid #fff;
+      outline: none;
+      background: transparent;
+    }
+    .login-box .user-box label {
+      position: absolute;
+      top:0;
+      left: 0;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      pointer-events: none;
+      transition: .5s;
+    }
+    
+    .login-box .user-box input:focus ~ label,
+    .login-box .user-box input:valid ~ label {
+      top: -20px;
+      left: 0;
+      color: #03e9f4;
+      font-size: 12px;
+    }
+   
+   
+    @keyframes btn-anim1 {
+      0% {
+        left: -100%;
+      }
+      50%,100% {
+        left: 100%;
+      }
+    }
+    
+    .pulse:hover,
+  .pulse:focus {
+    -webkit-animation: pulse 1s;
+            animation: pulse 1s;
+    box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+  }
+  
+  @-webkit-keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 var(--hover);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 var(--hover);
+    }
+  }
+  .pulse {
+      --color:  #03e9f4;
+      --hover: #0e0341;
+    }
+  
+    button, input[type=button]{
+      color: var(--color);
+      transition: 0.25s;
+    }
+    button:hover, button:focus, input[type=button]:hover, input[type=button]:focus {
+      border-color: var(--hover);
+      color: #fff;
+    }
+   
+    button, input[type=button] {
+      background: none;
+      border: 2px solid;
+      font: inherit;
+      line-height: 1;
+      margin: 0.5em;
+      padding: 0.5em ;
+    }
+    
+    h1 {
+      font-weight: 400;
+    }
+    
+    code {
+      color: #e4cb58;
+      font: inherit;
+    }
+  
+  #btnRew{
+    position: absolute;
+    top: 500px;
+    right: 0px;
+  }
+  
+  .clasuta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-top: 10vh; */
+    min-height: 100vh;;
+    /* margin-top: 96px; */
   }
