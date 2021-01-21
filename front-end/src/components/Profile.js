@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Navbar from './Navbar';
 import { getId, setId } from '../Utils'
 import { get } from '../Axios'
+import './Profile.css'
 
 export default class Profile extends Component {
     constructor(props) {
@@ -37,11 +38,10 @@ export default class Profile extends Component {
         return (
             <div>
                 <Navbar />
-                aici o sa fie pg de profil a utiliz cu id: {this.state.id}
-                {this.state.user.name} - {this.state.user.surname}<br/>
+                <h1>{this.state.user.name} - {this.state.user.surname}<br/></h1>
                 {/* <a href="/resetPassword"><input className="pulse" type="button" value="Update Password"/></a> */}
-                <button className="pulse" onClick={this.updatePass}>Update Password</button>
-                <button className="pulse" onClick={this.updateProfile}>Update Profile</button>
+                <button className="pulse" onClick={this.updatePass} id="updatePass">Update Password</button>
+                <button className="pulse" onClick={this.updateProfile} id="updateProfile">Update Profile</button>
 
             </div>
         )
