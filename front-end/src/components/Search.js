@@ -93,9 +93,10 @@ export default class Search extends Component {
             <div className="search-review-item" key={review.id}>
               De la {review.origin} la {review.destination}<br />
               Cu {review.meanOfTransport} la ora {review.departureHour}<br />
-              Am facut {review.tripDuration} si a fost {review.crowdedness}<br />
-              Si pot sa spun doar ca {review.observations}...<br/>
-              Per total: {review.satisfactionLevel}
+              Am facut {review.tripDuration} de minute
+              A fost {review.crowdedness}<br />
+              Observatii: {review.observations}...<br/>
+              Nivel de satisfactie: {review.satisfactionLevel}
             </div>
           ))}
         </div>
