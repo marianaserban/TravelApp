@@ -51,6 +51,7 @@ export default class RessetPassword extends Component {
     render() {
         return (
             <div>
+                 <div className='clasuta'>
                 <div className="login-box">
                     <h2>Resset Password</h2>
                     <form onSubmit={this.handleSubmit} noValidate>
@@ -65,6 +66,7 @@ export default class RessetPassword extends Component {
                         <button className="pulse" type="submit">Submit</button>
                     </form>
                 </div>
+            </div>
             </div>
         )
     }

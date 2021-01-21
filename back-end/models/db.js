@@ -1,7 +1,7 @@
 
 const {Sequelize}=require('sequelize')
 
-const sequelize=new Sequelize('appDb','root','mariadb',{
+const sequelize=new Sequelize('appDb','root','mariana',{
     dialect:"mysql",
 
 })

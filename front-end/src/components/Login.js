@@ -47,24 +47,28 @@ export default class Login extends Component {
     render() {
         return (
             <div>
-                <div className="login-box">
-                    <h2>Login</h2>
-                    <form onSubmit={this.handleSubmit} noValidate>
-                        <div className="user-box">
-                            <input type="text" name="email" required="" onChange={this.handleChange} />
-                            <label>Email</label>
-                        </div>
-                        <div className="user-box">
-                            <input type="password" name="password" required="" onChange={this.handleChange} />
-                            <label>Password</label>
-                        </div>
+                <div className="clasuta">
+                    <div className="login-box">
+                        <h2>Login</h2>
+                        <form onSubmit={this.handleSubmit} noValidate>
+                            <div className="user-box">
+                                <input type="text" name="email" required="" onChange={this.handleChange} />
+                                <label>Email</label>
+                            </div>
+                            <div className="user-box">
+                                <input type="password" name="password" required="" onChange={this.handleChange} />
+                                <label>Password</label>
+                            </div>
 
-                        <a href="/register"><input className="pulse" type="button" value="Register" /></a>
-                        <button className="pulse" type="submit">Login</button>
+                            <a href="/register"><input className="pulse" type="button" value="Register" /></a>
+                            <button className="pulse" type="submit">Login</button>
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
-                <a href="/search"><input className="pulse" type="button" value="Go without login" id="btnRew" /></a>
+                <div >
+                    <a href="/search"><input className="pulse" type="button" value="Go without login" id="btnRew" /></a>
+                </div>
             </div>
         )
     }
