@@ -3,7 +3,7 @@ import { getId, setId } from '../Utils'
 import './AddReview.css'
 import Axios from "axios"
 
-export default class AddReview extends Component {
+export default class ProfileEdit extends Component {
     constructor(props) {
         super(props);
         this.state = {
