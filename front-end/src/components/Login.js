@@ -27,6 +27,9 @@ export default class Login extends Component {
             console.log(res)
         } else {
             alert(res.message)
+            if(res.message===undefined){
+                alert('undef')
+            }
         }
 
     }

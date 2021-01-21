@@ -1,13 +1,12 @@
-h1{
-    padding: 50px;
-
+#name{
+    padding: 100px;
 }
 #updatePass{
     width: 500px;
-    padding: 20px;
+    padding: 30px;
 }
 #updateProfile{
     width: 500px;
-    padding: 20px;
+    padding: 30px;
 
 }

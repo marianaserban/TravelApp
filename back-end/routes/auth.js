@@ -89,13 +89,16 @@ router.post('/login', async (req, res) => {
       res.status(400).send({ ok: false, message: 'Please enter all fields' })
     }
     let user = await User.findOne({ where: { email: req.body.email } })
+    if(!user){
+      res.status(400).send({message: 'You dont have an account' })
+    }
     let valid = await bcrypt.compare(req.body.password, user.password);
-  
     if (valid) {
       res.send({ ok: true, id: user.id });
     } else {
       res.send({ ok: false,message:'Password/email doesnt match' });
     }
+    
   }
   catch (err) {
     console.log(err)

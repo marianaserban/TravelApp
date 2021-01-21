@@ -1,35 +1,83 @@
 import React, { Component } from 'react'
-import Navbar from './Navbar';
 import { getId, setId } from '../Utils'
-import { get } from '../Axios'
+import './AddReview.css'
+import Axios from "axios"
 
-export default class ProfileEdit extends Component {
+export default class AddReview extends Component {
     constructor(props) {
         super(props);
         this.state = {
             id: getId(),
-            user: {}
+            userNew: {
+                name:"",
+                surname:"",
+                email:"",
+            }
         };
-
-        this.getUserData();
+        this.state.id = this.props.location.state.id;
+        this.state.user=this.props.location.state.user;
+        console.log(this.state.id, this.state.user)
+    }
+    updateUser = async () => {
+       
+        Axios.put(`http://localhost:8080/profile/${this.state.id}`, JSON.stringify(this.state.userNew),
+            {
+                headers: { "Content-Type": "application/json" }
+            }
+        ).then((res) => {
+            alert('Profile updated')
+            this.props.history.push(`/profile`)
+        })
+            .catch(error => {
+                if (error.response !== undefined) {
+                    alert(error.response.data.message)
+                } else {
+                    alert('eroare')
+                }
+            }
+            );
     }
 
-    getUserData = async() => {
-        let res = await get(`http://localhost:8080/profile/${this.state.id}`, {})
-        console.log('rezultate profil', res);
-        this.setState({ user: res })
-    }
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.updateUser()
+    };
 
+    handleChange = (e) => {
+        e.preventDefault();
+        let newUser = this.state.user;
+        console.log(e.target.name, e.target.value, newUser);
+        newUser[e.target.name] = e.target.value;
+        this.setState({ userNew: newUser });
+    };
     render() {
         return (
             <div>
-                <Navbar />
-                aici o sa fie pg de profil a utiliz cu id: {this.state.id}
-                {this.state.user.name} - {this.state.user.surname}<br/>
-                TODO: formular cu inputurile pt user si buton de salvare; la salvare put in db la /profile/:id_user_logat
-                {/* <a href="/resetPassword"><input className="pulse" type="button" value="Update Password"/></a> */}
-                {/* <button className="pulse" onClick={this.updatePass}>Update Password</button> */}
+                <div className="clasuta">
+                    <div className="login-box">
+                        <h2>Edit profile</h2>
+                        <form onSubmit={this.handleSubmit} noValidate>
+                            <div className="user-box">
+                                <input type="text" name="name" value={this.state.user.name} onChange={this.handleChange} />
+                                <label>Name</label>
 
+                            </div>
+                            <div className="user-box">
+                                <input type="text" name="surname" value={this.state.user.surname} onChange={this.handleChange} />
+                                <label>Surname</label>
+
+                            </div>
+
+
+                            <div className="user-box">
+                                <input type="text" name="email" value={this.state.user.email} onChange={this.handleChange} />
+                                <label>Departure hour</label>
+                            </div>
+                            <button className="pulse" type="submit">Update</button>
+                        </form>
+
+                    </div>
+                </div>
             </div>
         )
     }

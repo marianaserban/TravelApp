@@ -25,7 +25,7 @@ export default class Profile extends Component {
       updateProfile = () => {
         this.props.history.push({
             pathname: "/profile/edit",
-            state: { id: this.state.id },
+            state: { id: this.state.id, user:this.state.user }
           });
       }
 
@@ -38,7 +38,7 @@ export default class Profile extends Component {
         return (
             <div>
                 <Navbar />
-                <h1>{this.state.user.name} - {this.state.user.surname}<br/></h1>
+                <h1 id="name">{this.state.user.name} - {this.state.user.surname}<br/></h1>
                 {/* <a href="/resetPassword"><input className="pulse" type="button" value="Update Password"/></a> */}
                 <button className="pulse" onClick={this.updatePass} id="updatePass">Update Password</button>
                 <button className="pulse" onClick={this.updateProfile} id="updateProfile">Update Profile</button>
