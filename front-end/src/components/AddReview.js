@@ -79,12 +79,12 @@ export default class AddReview extends Component {
 
                             <div className="user-box">
                                 <input type="text" name="departureHour" onChange={this.handleChange} />
-                                <label>Departure hour</label>
+                                <label>Departure hour - 00:00:00 through 23:59:59.997</label>
                             </div>
 
                             <div className="user-box">
                                 <input type="text" name="tripDuration" onChange={this.handleChange} />
-                                <label>Trip duration</label>
+                                <label>Trip duration - hours</label>
 
                             </div>
 
@@ -101,7 +101,7 @@ export default class AddReview extends Component {
                             </div>
                             <div className="user-box">
                                 <input type="text" name="satisfactionLevel" onChange={this.handleChange} />
-                                <label>Satisfaction level</label>
+                                <label>Satisfaction level - from 1 to 10</label>
                             </div>
                             <button className="pulse" type="submit">Add</button>
                         </form>

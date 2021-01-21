@@ -7,6 +7,16 @@ const User=require('../models').User
 //adauga review
 router.post('/user/:pid/review', async (req, res,next) => {
     try {
+
+        const { origin, destination, meanOfTransport, departureHour,
+            tripDuration,crowdedness,observations,satisfactionLevel} = req.body;
+        let errors = [];
+      
+        if (!origin || !destination || !meanOfTransport || !departureHour || !tripDuration || !crowdedness || !observations || !satisfactionLevel) {
+          errors.push({ msg: 'Please enter all fields' });
+          res.status(400).send({ message: 'Please enter all fields' })
+        }
+
         const person = await User.findByPk(req.params.pid)
        if(person){
 
@@ -19,15 +29,22 @@ router.post('/user/:pid/review', async (req, res,next) => {
             res.status(400).json({ message: 'failed' })
        }
     } catch (error) {
-        //Trebuie facut catch la erori la final in server.js (prin middleware ca la seminar)
-        //next(error);
-        res.status(500).send({message:'crapa'})
+  
+        res.status(500).send({message:'fill in the fields properly'})
     }
 })
 
 //modificare un anumit review
 router.put('/user/:pid/review/:rid', async (req, res) => {
 
+    const { origin, destination, meanOfTransport, departureHour,
+        tripDuration,crowdedness,observations,satisfactionLevel} = req.body;
+    let errors = [];
+  
+    if (!origin || !destination || !meanOfTransport || !departureHour || !tripDuration || !crowdedness || !observations || !satisfactionLevel) {
+      errors.push({ msg: 'Please enter all fields' });
+      res.status(400).send({ message: 'Please enter all fields' })
+    }
     try {
         const id = req.params.rid;
         const review = await models.Review.findByPk(id)
