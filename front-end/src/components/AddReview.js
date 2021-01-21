@@ -84,7 +84,7 @@ export default class AddReview extends Component {
 
                             <div className="user-box">
                                 <input type="text" name="tripDuration" onChange={this.handleChange} />
-                                <label>Trip duration - hours</label>
+                                <label>Trip duration - minutes</label>
 
                             </div>
 
