@@ -1,6 +1,8 @@
 # TravelApp
 
-Start the app
+Application for giving feedback on public transport
+
+# Start the app
 
 Back-end
 - go to the back-end/ directory: cd back-end/
